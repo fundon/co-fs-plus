@@ -1,15 +1,13 @@
-var fs = require('..');
 var co = require('co');
+var fs = require('..');
 
-co(function *() {
-  var files = yield fs.walk('../')
-  console.log(files);
-
-  var files = yield fs.readdir('.', {   // Recursively, excudes hidden files.
-    filterFilename: function (filename) {
-      return filename[0] != '.';
-    }
-  }, []);
-  console.log(files);
-})();
+describe('.walk()', function () {
+  it('should work', function (done) {
+    co(function *() {
+      var files = yield fs.walk('test/fixtures')
+      files.should.have.length(1);
+      files[0].should.equal('test/fixtures/msg.txt');
+    })(done);
+  });
+});
 
