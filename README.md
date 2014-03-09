@@ -23,7 +23,7 @@ var files = yield fs.readdir('/opt/boxen', {   // Recursively, excudes hidden fi
 }, []);
 ```
 
-## API
+## APIs
 
   `fs.walk(path, [options], [arr])`
 
