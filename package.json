@@ -1,0 +1,36 @@
+{
+  "name": "co-fs-plus",
+  "version": "0.0.1",
+  "description": "'co-fs' plus, supports `fs.walk` etc.",
+  "keywords": [
+    "async",
+    "flow",
+    "generator",
+    "coro",
+    "coroutine",
+    "walk",
+    "recursive"
+  ],
+  "homepage": "https://github.com/fundon/co-fs-plus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fundon/co-fs-plus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fundon/co-fs-plus/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "author": "fundon <cfddream@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "co": "^3.0.4",
+    "co-fs": "^1.1.1"
+  },
+  "devDependencies": {
+    "should": "^3.1.3",
+    "mocha": "^1.17.1"
+  }
+}
