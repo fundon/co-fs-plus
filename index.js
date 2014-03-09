@@ -32,8 +32,8 @@ fs.walk = walk;
  *
  *  Examples:
  *
- *      var files = yield walk('/opt/boxen');
- *      var files = yield walk('/opt/boxen', {
+ *      var files = yield fs.walk('/opt/boxen');
+ *      var files = yield fs.walk('/opt/boxen', {
  *        followSymlinks: true
  *      });
  *
@@ -76,9 +76,9 @@ fs.readdir = readdir;
  *
  *  Examples:
  *
- *      var files = yield readdir('./');
- *      var files = yield readdir('./', null, []);  // Recursive!
- *      var files = yield readdir('/opt/boxen', {   // Excudes hidden files.
+ *      var files = yield fs.readdir('./');
+ *      var files = yield fs.readdir('./', null, []);  // Recursive!
+ *      var files = yield fs.readdir('/opt/boxen', {   // Excudes hidden files.
  *        filterFilename: function (filename) {
  *          return filename[0] != '.';
  *        }
