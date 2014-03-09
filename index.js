@@ -11,8 +11,7 @@ var join = path.join;
 var resolve = path.resolve;
 var realpath = fs.realpath;
 var readFile = fs.readFile;
-// Original `fs.readdir`
-var oreaddir = ofs.readdir;
+var oreaddir = ofs.readdir; // Original `fs.readdir`
 
 /**
  *  Expose `fs`
