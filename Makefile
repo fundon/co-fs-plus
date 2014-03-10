@@ -6,4 +6,7 @@ test:
 		--harmony \
 		--bail
 
-.PHONY: test
+clean:
+	@rm -rf test/a
+
+.PHONY: test clean

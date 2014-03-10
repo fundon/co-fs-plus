@@ -1,3 +1,4 @@
 .node-version
 node_modules/
 test/a/b/c/d/e/f/g
+npm-debug.log
