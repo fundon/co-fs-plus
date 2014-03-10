@@ -1,7 +1,7 @@
 {
   "name": "co-fs-plus",
   "version": "0.0.3",
-  "description": "'co-fs' plus, supports `fs.walk`, `fs.mkdirp` etc.",
+  "description": "co-fs plus, supports `fs.walk`, `fs.mkdirp` etc.",
   "keywords": [
     "async",
     "flow",
