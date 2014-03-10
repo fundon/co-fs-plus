@@ -1,7 +1,7 @@
 {
   "name": "co-fs-plus",
-  "version": "0.0.2",
-  "description": "'co-fs' plus, supports `fs.walk` etc.",
+  "version": "0.0.3",
+  "description": "'co-fs' plus, supports `fs.walk`, `fs.mkdirp` etc.",
   "keywords": [
     "async",
     "flow",
@@ -9,7 +9,8 @@
     "coro",
     "coroutine",
     "walk",
-    "recursive"
+    "recursive",
+    "mkdirp"
   ],
   "homepage": "https://github.com/fundon/co-fs-plus",
   "repository": {
