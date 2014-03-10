@@ -1,6 +1,6 @@
 # co-fs-plus
 
-  `co-fs` plus, supprots `fs.walk(path)` walk a directory tree.
+  [co-fs](https://github.com/visionmedia/co-fs) plus, supprots `fs.walk` `fs.mkdirp` walk a directory tree.
 
 ## Installation
 
@@ -21,6 +21,8 @@ var files = yield fs.readdir('/opt/boxen', {   // Recursively, excudes hidden fi
     return filename[0] != '.';
   }
 }, []);
+
+var res = yield fs.mkdirp('web/js/jquery');
 ```
 
 ## APIs
@@ -28,6 +30,8 @@ var files = yield fs.readdir('/opt/boxen', {   // Recursively, excudes hidden fi
   `fs.walk(path, [options], [arr])`
 
   `fs.readdir(path, [options], [arr])`
+
+  `fs.mkdirp(path, [mode])`
 
 ## License
 
