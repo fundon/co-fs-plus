@@ -3,15 +3,17 @@
  */
 
 var co = require('co');
-var ofs = require('fs'); // Original `fs`
+var ofs = require('fs');    // Original `fs`
 var fs = require('co-fs');
 var path = require('path');
 
 var join = path.join;
 var resolve = path.resolve;
+var dirname = path.dirname;
 var realpath = fs.realpath;
 var readFile = fs.readFile;
 var oreaddir = ofs.readdir; // Original `fs.readdir`
+var ostat = ofs.stat;       // Oreaddir `fs.stat`
 
 /**
  *  Expose `fs`
@@ -59,6 +61,7 @@ function walk(path, options, arr) {
           arr.push(path);
         }
         done(null, arr);
+        arr = null;
       })();
     });
   };
@@ -107,5 +110,71 @@ function readdir(path, options, arr) {
         done(null, arr);
       })();
     });
+  };
+}
+
+/**
+ * Expose `mkdirp(path, [mode])`.
+ */
+
+fs.mkdirp = mkdirp;
+
+/**
+ *  Recursively mkdir, like `mkdir -p`
+ *
+ *  Examples:
+ *
+ *    var res = fs.mkdirp('./web/js/jquery')
+ *
+ *  @param {String} path
+ *  @param {Number|String} mode
+ *  @return {Object}
+ *    - { path: 'last made directory' }
+ *    - { path: 'last made directory', error: 'mkdir error' }
+ *  @api public
+ */
+
+function mkdirp(path, mode, arr) {
+  if (!mode) {
+    mode = 0777 & (~process.umask());
+  } else if (typeof  mode === 'string') {
+    mode = parseInt(mode, 8);
+  }
+  if (!arr) arr = [];
+  path = resolve(path);
+
+  function *getPaths(path, arr) {
+    try {
+      var stat = yield fs.stat(path);
+      if (!stat || (stat && !stat.isDirectory())) {
+        arr.unshift(path);
+      }
+    } catch (e) {
+      arr.unshift(path);
+      path = dirname(path);
+      yield getPaths(path, arr);
+    }
+    return arr;
+  }
+
+  function *mkp(p) {
+    while ((p = arr.shift())) {
+      try {
+        yield fs.mkdir(p, mode);
+        path = p;
+      } catch (e) {
+        return e;
+      }
+    }
+  }
+
+  return function (done) {
+    co(function *() {
+      arr = yield getPaths(path, arr);
+      var err = yield mkp();
+      var res = { path: path };
+      if (err) res.error = res;
+      done(null, res);
+    })();
   };
 }
