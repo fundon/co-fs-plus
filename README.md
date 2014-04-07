@@ -1,4 +1,4 @@
-# co-fs-plus
+# co-fs-plus [![Build Status](https://travis-ci.org/fundon/co-fs-plus.svg)](https://travis-ci.org/fundon/co-fs-plus)
 
   [co-fs](https://github.com/visionmedia/co-fs) plus, supprots `fs.walk` `fs.mkdirp` walk a directory tree.
 
