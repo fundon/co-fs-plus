@@ -163,6 +163,7 @@ function mkdirp(path, mode, arr) {
         yield fs.mkdir(p, mode);
         path = p;
       } catch (e) {
+        if (e.code === 'EEXIST') continue;
         return e;
       }
     }
