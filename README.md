@@ -1,6 +1,6 @@
 # co-fs-plus [![Build Status](https://travis-ci.org/fundon/co-fs-plus.svg)](https://travis-ci.org/fundon/co-fs-plus)
 
-  [co-fs](https://github.com/visionmedia/co-fs) plus and supports `fs.walk` `fs.mkdirp` `fs.readdir` `fs.rimraf`.
+  [co-fs](https://github.com/visionmedia/co-fs) plus, supports `fs.walk` `fs.mkdirp` `fs.readdir` `fs.rimraf`.
 
 ## Installation
 
