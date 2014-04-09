@@ -1,6 +1,6 @@
 # co-fs-plus [![Build Status](https://travis-ci.org/fundon/co-fs-plus.svg)](https://travis-ci.org/fundon/co-fs-plus)
 
-  [co-fs](https://github.com/visionmedia/co-fs) plus, supprots `fs.walk` `fs.mkdirp` `fs.readdir` walk a directory tree.
+  [co-fs](https://github.com/visionmedia/co-fs) plus and supports `fs.walk` `fs.mkdirp` `fs.readdir` `fs.rimraf`.
 
 ## Installation
 
@@ -23,6 +23,8 @@ var files = yield fs.readdir('/opt/boxen', {   // Recursively, excudes hidden fi
 }, []);
 
 var res = yield fs.mkdirp('web/js/jquery');
+
+yield fs.rimraf('web/js/jquery');
 ```
 
 ## APIs
@@ -33,6 +35,10 @@ var res = yield fs.mkdirp('web/js/jquery');
 
   `fs.mkdirp(path, [mode])`
 
+  `fs.rimraf(path, [mode])`, based on [rimraf][]
+
 ## License
 
   MIT
+
+[rimraf]: https://github.com/isaacs/rimraf

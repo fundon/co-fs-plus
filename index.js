@@ -6,6 +6,7 @@ var co = require('co');
 var ofs = require('fs');    // Original `fs`
 var fs = require('co-fs');
 var path = require('path');
+var rimraf_ = require('rimraf');
 
 var join = path.join;
 var resolve = path.resolve;
@@ -23,7 +24,7 @@ module.exports = exports = fs;
 
 
 /**
- * Expose `walk(path, [options], [arr])`.
+ *  Expose `walk(path, [options], [arr])`.
  */
 
 fs.walk = walk;
@@ -68,7 +69,7 @@ function walk(path, options, arr) {
 }
 
 /**
- * Expose `readdir(path, [options], [arr])`.
+ *  Expose `readdir(path, [options], [arr])`.
  */
 
 fs.readdir = readdir;
@@ -114,7 +115,7 @@ function readdir(path, options, arr) {
 }
 
 /**
- * Expose `mkdirp(path, [mode])`.
+ *  Expose `mkdirp(path, [mode])`.
  */
 
 fs.mkdirp = mkdirp;
@@ -177,5 +178,32 @@ function mkdirp(path, mode, arr) {
       if (err) res.error = res;
       done(null, res);
     })();
+  };
+}
+
+/**
+ *  Expose `rimraf(path)`.
+ */
+
+fs.rimraf = rimraf;
+
+/**
+ *
+ *  Recursively rm dir, like `rm -rf`
+ *
+ *  Examples:
+ *
+ *    var res = fs.rimraf('./web/js/jquery')
+ *
+ *  @param {String} string
+ *  @api public
+ */
+
+function rimraf(path) {
+  return function (done) {
+    rimraf_(path, function (err) {
+      if (err) return done(err);
+      done(null);
+    });
   };
 }

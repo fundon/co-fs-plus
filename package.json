@@ -28,7 +28,8 @@
   "license": "MIT",
   "dependencies": {
     "co": "^3.0.4",
-    "co-fs": "^1.2.0"
+    "co-fs": "^1.2.0",
+    "rimraf": "^2.2.6"
   },
   "devDependencies": {
     "should": "^3.1.3",
