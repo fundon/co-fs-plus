@@ -61,9 +61,8 @@ function walk(path, options, arr) {
         } else if (stat.isFile()) {
           arr.push(path);
         }
-        done(null, arr);
-        arr = null;
-      })();
+        return arr;
+      })(done);
     });
   };
 }
@@ -108,8 +107,8 @@ function readdir(path, options, arr) {
             yield walk(join(path, filename), options, arr)
           }
         }
-        done(null, arr);
-      })();
+        return arr;
+      })(done);
     });
   };
 }
@@ -176,8 +175,8 @@ function mkdirp(path, mode, arr) {
       var err = yield mkp();
       var res = { path: path };
       if (err) res.error = res;
-      done(null, res);
-    })();
+      return res;
+    })(done);
   };
 }
 
