@@ -14,7 +14,7 @@ var dirname = path.dirname;
 var realpath = fs.realpath;
 var readFile = fs.readFile;
 var oreaddir = ofs.readdir; // Original `fs.readdir`
-var ostat = ofs.stat;       // Oreaddir `fs.stat`
+var olstat = ofs.lstat;     // Oreaddir `fs.lstat`
 
 /**
  *  Expose `fs`
@@ -50,7 +50,7 @@ function walk(path, options, arr) {
   if (!options) options = {};
   if (!arr) arr = [];
   return function (done) {
-    fs.lstat(path, function (err, stat) {
+    olstat(path, function (err, stat) {
       if (err) return done(err);
       co(function *() {
         if (options.followSymlinks && stat.isSymbolicLink()) {
